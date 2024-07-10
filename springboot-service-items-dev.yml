@@ -1,0 +1,5 @@
+config:
+  text: "Setting up dev environment"
+  author:
+    name: "Diego A Munoz"
+    mail: "dams9011@gmail.com"
