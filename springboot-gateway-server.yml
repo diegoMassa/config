@@ -1,14 +1,24 @@
 spring:
   security:
     oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://127.0.0.1:9100
       client:
         registration:
           gateway:
+            provider: auth-server-custom-provider
             client-id: client-app
             client-secret: im-a-secret
             authorization-grant-type: authorization_code
             redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
-            scope: openid,profile,email,read,write
+            scope:
+              - openid
+              - profile
+              - read
+              - write
         provider:
-          auth-server:
+          auth-server-custom-provider:
             issuer-uri: http://127.0.0.1:9100
+            user-info-uri: http://127.0.0.1:9100/userinfo
+            jwk-set-uri: http://127.0.0.1:9100/.well-known/jwks.json
