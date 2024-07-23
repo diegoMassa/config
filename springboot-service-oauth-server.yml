@@ -1,15 +1,15 @@
 spring:
   security:
     oauth2:
-      client:
-        registration:
-          client-app:
-            client-id: client-app
-            client-secret: im-a-secret
-            authorization-grant-type: authorization_code
-            redirect-uri: http://127.0.0.1:8090/authorized
+      authorization:
+        client:
+          client-id: client-app
+          client-secret: im-a-secret
+          authorization-grant-type: authorization_code
+          redirect-uri: http://127.0.0.1:8090/authorized
             scope:
               - openid
               - profile
               - read
               - write
+      issuer: http://localhost:9100  # URL completa del servidor de autenticación
