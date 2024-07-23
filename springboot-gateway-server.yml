@@ -6,7 +6,7 @@ spring:
           issuer-uri: http://127.0.0.1:9100
       client:
         registration:
-          gateway:
+          client-app:
             provider: auth-server-custom-provider
             client-id: client-app
             client-secret: im-a-secret
@@ -17,6 +17,7 @@ spring:
               - profile
               - read
               - write
+            client-name: client-app
         provider:
           auth-server-custom-provider:
             issuer-uri: http://127.0.0.1:9100
