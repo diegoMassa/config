@@ -4,6 +4,7 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: "http://127.0.0.1:9100"
+          key: "Im-a-secret-jwt-key"
       client:
         registration:
           client-app:
