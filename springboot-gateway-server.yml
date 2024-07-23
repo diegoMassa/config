@@ -1,24 +1,14 @@
 spring:
   security:
     oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: "http://127.0.0.1:9100"
-          key: "Im-a-secret-jwt-key"
       client:
         registration:
-          client-app:
-            provider: spring
+          gateway:
             client-id: client-app
             client-secret: im-a-secret
             authorization-grant-type: authorization_code
-            redirect-uri: "http://127.0.0.1:9000/authorized"
-            scope:
-              - openid
-              - profile
-              - read
-              - write
-            client-name: client-app
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: openid,profile,email,read,write
         provider:
-          spring:
-            issuer-uri: "http://127.0.0.1:9100"
+          auth-server:
+            issuer-uri: http://127.0.0.1:9100
