@@ -10,7 +10,7 @@ spring:
             client-id: client-app
             client-secret: im-a-secret
             authorization-grant-type: authorization_code
-            redirect-uri: http://127.0.0.1:8090/api/security/authorized
+            redirect-uri: http://127.0.0.1:8090/authorized
             scope:
               - openid
               - profile
