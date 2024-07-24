@@ -1,15 +1,14 @@
 spring:
   security:
-    user:
-      name: admin
-      password: {noop}12345
     oauth2:
       authorizationserver:
+        issuer: http://auth-server:9100
         client:
           client-app:
             registration:
               client-id: "client-app"
-              client-secret: "im-a-secret"
+              client-secret: "{noop}im-a-secret"
+              client-name: "API Gateway solution"
               client-authentication-methods:
                 - "client_secret_basic"
               authorization-grant-types:
@@ -18,6 +17,7 @@ spring:
                 - "client_credentials"
               redirect-uris:
                 - "http://127.0.0.1:8090/login/oauth2/code/client-app"
+                - "http://127.0.0.1:8090/authorized"
               post-logout-redirect-uris:
                 - "http://127.0.0.1:8090/"
               scopes:
