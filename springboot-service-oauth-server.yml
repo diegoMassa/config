@@ -1,16 +1,28 @@
 spring:
   security:
+    user:
+      name: admin
+      password: {noop}12345
     oauth2:
-      authorization:
+      authorizationserver:
         client:
-          client-id: client-app
-          client-secret: im-a-secret
-          authorization-grant-type: authorization_code
-          redirect-uri: http://localhost:8090/login/oauth2/code/client-app
-            scope:
-              - openid
-              - profile
-              - read
-              - write
-        provider-settings:
-          issuer: http://localhost:9100  # URL completa del servidor de autenticación
+          client-app:
+            registration:
+              client-id: "client-app"
+              client-secret: "im-a-secret"
+              client-authentication-methods:
+                - "client_secret_basic"
+              authorization-grant-types:
+                - "authorization_code"
+                - "refresh_token"
+                - "client_credentials"
+              redirect-uris:
+                - "http://localhost:8090/login/oauth2/code/client-app"
+              post-logout-redirect-uris:
+                - "http://127.0.0.1:8090/"
+              scopes:
+                - "openid"
+                - "profile"
+                - "read"
+                - "write"
+            require-authorization-consent: false
